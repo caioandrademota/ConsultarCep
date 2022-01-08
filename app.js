@@ -1,3 +1,4 @@
+// Developed by Caio Mota
 //seleção de elementos
 var submitButton = document.querySelector("#app form button");
 var zipCodeField = document.querySelector("#app form input");
@@ -18,6 +19,13 @@ function run(event) {
   axios
     .get("https://viacep.com.br/ws/" + zipCode + "/json/") //realização da requisição com o Axios
     .then((response) => {
+      if (response.data.erro) {
+      //Se um cep inválido for inserido, a api dá uma resposta com código 200
+      //mas o corpo da requisição possui um "erro": true;
+      //Para isso, caso essa chave seja encontrada no corpo da requisição
+      //um novo erro será gerado, e ele entrará no catch()    
+        throw new Error("CEP Inválido");
+      }
       content.innerHTML = "";
       //manipulando a resposta
       createLine(response.data.cep);
@@ -27,7 +35,9 @@ function run(event) {
     })
     .catch((err) => {
       //manipulando os erros
+      content.innerHTML = "";
       console.log(err);
+      createLine("Não foi possível encontrar seu CEP! Tente novamente");
     });
 
   console.log(zipCodeField.value);
