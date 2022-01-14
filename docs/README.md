@@ -11,6 +11,8 @@ A API usada nesse projeto foi o [ViaCep](https://viacep.com.br/), que é um webs
 
 ![Resultado da Pesquisa](https://user-images.githubusercontent.com/54656065/148662990-0111d400-92c3-47ce-883d-b8c0e712c595.png)
 
+___
+
 ### English
 Project that utilizes HTML5, CSS3 and JavaScript, utilized to comprehend concepts of editing elements, error treatment, DOM manipulation and HTTP requisitions.
 
